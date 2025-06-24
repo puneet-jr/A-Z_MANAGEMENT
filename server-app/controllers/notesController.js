@@ -1,4 +1,5 @@
 import asyncHandler from 'express-async-handler';
+import mongoose from 'mongoose';
 import Note from '../models/notesModel.js';
 import User from '../models/userModel.js';
 

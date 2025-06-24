@@ -22,7 +22,18 @@ const taskSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    // ADD THIS: Reference to the User who created this task
+    estimatedTime: {
+        type: Number,
+        default: null
+    },
+    actualTime: {
+        type: Number,
+        default: null
+    },
+    completedAt: {  // Added missing field
+        type: Date,
+        default: null
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -30,5 +41,12 @@ const taskSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
+// Add middleware to set completedAt when status changes to completed
+taskSchema.pre('save', function(next) {
+    if (this.isModified('status') && this.status === 'completed' && !this.completedAt) {
+        this.completedAt = new Date();
+    }
+    next();
+});
 const Task = mongoose.model('Task', taskSchema);
 export default Task;

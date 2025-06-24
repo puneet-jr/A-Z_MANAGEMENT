@@ -7,7 +7,8 @@ import userRoutes from './routes/userRoutes.js';
 import noteRoutes from './routes/notesRoutes.js';
 import urgentEventRoutes from './routes/eventRoutes.js';
 import healthDataRoutes from './routes/healthRoutes.js';
-import dashboardRoutes from './routes/dashboardRoutes.js'; 
+import dashboardRoutes from './routes/dashboardRoutes.js';
+import analyticsRoutes from './routes/analyticsRoutes.js';
 import errorHandler from './middleware/errorHandler.js';
 
 dotenv.config();
@@ -26,7 +27,8 @@ app.use('/api/users', userRoutes);
 app.use('/api/notes', noteRoutes);
 app.use('/api/urgent-events', urgentEventRoutes);
 app.use('/api/health-data', healthDataRoutes);
-app.use('/api/dashboard', dashboardRoutes); // Add this
+app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 // Error handling middleware (should be last)
 app.use(errorHandler);
@@ -36,12 +38,12 @@ app.get('/', (req, res) => {
     res.json({ 
         message: 'Task Manager API is running!',
         version: '1.0.0',
-        features: ['Tasks', 'Users', 'Notes', 'Urgent Events', 'Health Data', 'Dashboard']
+        features: ['Tasks', 'Users', 'Notes', 'Urgent Events', 'Health Data', 'Dashboard', 'Analytics']
     });
 });
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+    console.log(`Server is running on port ${PORT}`);
+}); 

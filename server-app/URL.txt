@@ -1,0 +1,125 @@
+ ROOT ENDPOINT:
+
+GET    http://localhost:3000/
+
+
+USER ENDPOINTS:
+
+POST   http://localhost:3000/api/users/addUser
+POST   http://localhost:3000/api/users/checkUser
+GET    http://localhost:3000/api/users/getAllUsers
+GET    http://localhost:3000/api/users/getUserById/:userId
+GET    http://localhost:3000/api/users/getUserWithTasks/:userId
+GET    http://localhost:3000/api/users/getUserStats/:userId
+PUT    http://localhost:3000/api/users/updateUser/:userId
+DELETE http://localhost:3000/api/users/deleteUser/:userId
+
+
+TASK ENDPOINTS:
+
+POST   http://localhost:3000/api/tasks/register
+GET    http://localhost:3000/api/tasks/get
+GET    http://localhost:3000/api/tasks/user/:userId
+PUT    http://localhost:3000/api/tasks/update/:id
+DELETE http://localhost:3000/api/tasks/delete/:id
+
+NOTES ENDPOINTS:
+
+POST   http://localhost:3000/api/notes/create
+GET    http://localhost:3000/api/notes/get
+GET    http://localhost:3000/api/notes/user/:userId
+GET    http://localhost:3000/api/notes/stats/:userId
+GET    http://localhost:3000/api/notes/:id
+PUT    http://localhost:3000/api/notes/update/:id
+PATCH  http://localhost:3000/api/notes/toggle-pin/:id
+DELETE http://localhost:3000/api/notes/delete/:id
+
+
+HEALTH DATA ENDPOINTS:
+
+POST   http://localhost:3000/api/health-data/create
+GET    http://localhost:3000/api/health-data/get
+GET    http://localhost:3000/api/health-data/user/:userId
+GET    http://localhost:3000/api/health-data/stats/:userId
+PUT    http://localhost:3000/api/health-data/update/:id
+DELETE http://localhost:3000/api/health-data/delete/:id
+
+
+ URGENT EVENTS ENDPOINTS:
+
+ POST   http://localhost:3000/api/urgent-events/create
+GET    http://localhost:3000/api/urgent-events/get
+GET    http://localhost:3000/api/urgent-events/user/:userId
+GET    http://localhost:3000/api/urgent-events/stats/:userId
+PUT    http://localhost:3000/api/urgent-events/update/:id
+DELETE http://localhost:3000/api/urgent-events/delete/:id
+
+
+DASHBOARD ENDPOINTS:
+
+GET    http://localhost:3000/api/dashboard/user/:userId
+GET    http://localhost:3000/api/dashboard/tasks/:userId
+GET    http://localhost:3000/api/dashboard/trends/:userId
+
+ANALYTICS ENDPOINTS (Your Advanced Feature):
+
+
+POST   http://localhost:3000/api/analytics/analyse-tasks/:userId
+GET    http://localhost:3000/api/analytics/productivity/:userId
+GET    http://localhost:3000/api/analytics/completion-times/:userId
+GET    http://localhost:3000/api/analytics/full-analysis/:userId
+
+
+Create User (POST /api/users/addUser):
+{
+    "username": "johndoe",
+    "password": "password123",
+    "email": "john@example.com"
+}
+
+
+Create Task with Analytics Fields (POST /api/tasks/register):
+
+{
+    "title": "Complete Analytics Feature",
+    "description": "Build advanced analytics dashboard",
+    "startDate": "2024-12-24",
+    "dueDate": "2024-12-31",
+    "userId": "REPLACE_WITH_ACTUAL_USER_ID",
+    "estimatedTime": 8,
+    "actualTime": 10
+}
+
+
+Create Note (POST /api/notes/create):
+
+{
+    "title": "Complete Analytics Feature",
+    "description": "Build advanced analytics dashboard",
+    "startDate": "2024-12-24",
+    "dueDate": "2024-12-31",
+    "userId": "REPLACE_WITH_ACTUAL_USER_ID",
+    "estimatedTime": 8,
+    "actualTime": 10
+}
+
+Create Note (POST /api/notes/create):
+
+{
+    "title": "Project Meeting Notes",
+    "content": "Discussed analytics requirements",
+    "category": "work",
+    "userId": "REPLACE_WITH_ACTUAL_USER_ID"
+}
+
+Create Health Data (POST /api/health-data/create):
+
+{
+    "category": "exercise",
+    "value": 30,
+    "unit": "minutes",
+    "date": "2024-12-24",
+    "notes": "Morning jog",
+    "userId": "REPLACE_WITH_ACTUAL_USER_ID"
+}
+
